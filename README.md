@@ -15,3 +15,7 @@
       
       username: `guest`
       Password: `guest`
+
+  - Run the example
+    - `cd node`
+    - `npx tsx node main.ts`

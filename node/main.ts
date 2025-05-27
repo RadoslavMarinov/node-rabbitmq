@@ -3,10 +3,18 @@ import { Subscriber } from "./lib/message-broker/Sub.js";
 
 console.log(`👉 Hello = `);
 
-const sub = Subscriber.connect();
+const sub = new Subscriber();
+await sub.connect();
 
-const pub = new Publisher("hello");
+const pub = new Publisher();
 await pub.connect();
-pub.sendMessage("Hello World!");
+
+await pub.sendMessage("Hello World!");
+
+setTimeout(async () => {
+  console.log(`🚀 Timeout `);
+  await sub.close();
+  await pub.close();
+}, 5000);
 
 export {};
